@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
  import Headline from './Headline';
+ import checkPropsTypes from 'check-prop-types';
 
 
  const setUp =(props={})=>{
@@ -12,10 +13,33 @@ import {shallow} from 'enzyme';
     return wrapper;
   };
 
+  const checkProps=(component,expectedProps)=>{
+      const propsErr=checkPropsTypes(component.propTypes,expectedProps,'props',component.name);
+      return propsErr;
+  }
  
 
   describe('Headline Component',()=>{
-      describe('Have Props',()=>{
+     
+    describe('Should Not through a warning',()=>{
+        const expectedProps={
+            header:'Test Header',
+            desc:'Test Desc',
+            tempArr:[{
+                fName:'Test fName',
+                lName:'Test lName',
+                age:29,
+                email:'test@mail.com',
+                onlineStatus:false
+            }]
+        }
+
+        const propsErr=checkProps(Headline,expectedProps);
+        expect(propsErr).toBeUndefined();
+    })
+
+    
+    describe('Have Props',()=>{
          let component;
          beforeEach(()=>{
              const props={
@@ -41,6 +65,8 @@ import {shallow} from 'enzyme';
             expect(desc.length).toBe(1);
         })
       });
+
+
       describe('Have No Props',()=>{
          let wrapper;
          beforeEach(()=>{
@@ -51,4 +77,6 @@ import {shallow} from 'enzyme';
             expect(component.length).toBe(0);
         });
     });
+
+
   })

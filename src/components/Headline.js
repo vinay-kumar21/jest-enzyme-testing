@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.scss';
+import PropTypes from 'prop-types';
 
 const HeadLine=(props)=>{
 
@@ -14,4 +15,18 @@ const HeadLine=(props)=>{
         </div>
     )
 }
+
+HeadLine.propTypes={
+    header: PropTypes.string,
+    desc:PropTypes.string,
+    tempArr:PropTypes.arrayOf(PropTypes.shape({
+        fName:PropTypes.string,
+        lName:PropTypes.string,
+        age:PropTypes.number,
+        email:PropTypes.string,
+        onlineStatus:PropTypes.bool
+    
+    }))
+}
+
 export default HeadLine;
