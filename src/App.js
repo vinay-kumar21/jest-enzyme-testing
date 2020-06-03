@@ -24,7 +24,7 @@ function App({ posts, fetchPosts }) {
   };
 
   const configButton = {
-    buttonText: "Get postss",
+    buttonText: "Get posts",
     emitEvent: fetch
   };
 

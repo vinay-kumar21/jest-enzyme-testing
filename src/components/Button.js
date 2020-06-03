@@ -2,16 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const SharedButton = props => {
+const SharedButton = ({buttonText,emitEvent}) => {
   const submitEvent = () => {
-    if (props.emitEvent) {
-      props.emitEvent();
+    if (emitEvent) {
+    emitEvent();
     }
   };
 
   return (
     <button onClick={submitEvent} data-test="buttonComponent">
-      {props.buttonText}
+      {buttonText}
     </button>
   );
 };
