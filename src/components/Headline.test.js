@@ -1,23 +1,13 @@
 import React from 'react';
 import {shallow} from 'enzyme';
  import Headline from './Headline';
- import checkPropsTypes from 'check-prop-types';
+ import { findByTestAtrr, checkProps } from '../Utils/Utils';
 
 
  const setUp =(props={})=>{
     const component=shallow(<Headline  {...props}/>)
     return component;
       }
- const findByTestAtrr = (component, attr) => {
-    const wrapper = component.find(`[data-test='${attr}']`);
-    return wrapper;
-  };
-
-  const checkProps=(component,expectedProps)=>{
-      const propsErr=checkPropsTypes(component.propTypes,expectedProps,'props',component.name);
-      return propsErr;
-  }
- 
 
   describe('Headline Component',()=>{
      
